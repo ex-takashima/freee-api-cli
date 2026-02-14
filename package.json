@@ -1,0 +1,28 @@
+{
+  "name": "freee-api-cli",
+  "version": "1.0.0",
+  "description": "freee会計 API CLI ツール",
+  "main": "dist/index.js",
+  "bin": {
+    "freee": "dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "tsx src/index.ts"
+  },
+  "keywords": ["freee", "accounting", "cli"],
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.7.0",
+    "cli-table3": "^0.6.5",
+    "commander": "^12.1.0",
+    "dotenv": "^16.4.0",
+    "open": "^10.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.0",
+    "tsx": "^4.16.0",
+    "typescript": "^5.5.0"
+  }
+}
