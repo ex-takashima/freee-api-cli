@@ -94,6 +94,7 @@ export function registerDealsCommands(program: Command): void {
         console.log(`種別: ${d.type === "income" ? "収入" : "支出"}`);
         console.log(`金額: ${d.amount}`);
         console.log(`状態: ${d.status}`);
+        console.log(`取引先ID: ${d.partner_id ?? "-"}`);
         if (details && details.length > 0) {
           console.log("\n明細:");
           formatOutput(details, format, [
@@ -101,6 +102,29 @@ export function registerDealsCommands(program: Command): void {
             { key: "税区分", label: "税区分" },
             { key: "金額", label: "金額" },
             { key: "備考", label: "備考" },
+          ]);
+        }
+
+        const payments = d.payments?.map(
+          (p: {
+            date: string;
+            from_walletable_type: string;
+            from_walletable_id: number;
+            amount: number;
+          }) => ({
+            決済日: p.date,
+            口座種別: p.from_walletable_type,
+            口座ID: p.from_walletable_id,
+            金額: p.amount,
+          })
+        );
+        if (payments && payments.length > 0) {
+          console.log("\n決済:");
+          formatOutput(payments, format, [
+            { key: "決済日", label: "決済日" },
+            { key: "口座種別", label: "口座種別" },
+            { key: "口座ID", label: "口座ID" },
+            { key: "金額", label: "金額" },
           ]);
         }
       } catch (err: unknown) {

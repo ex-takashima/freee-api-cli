@@ -1,6 +1,6 @@
 {
   "name": "freee-api-cli",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "freee会計 API CLI ツール",
   "main": "dist/index.js",
   "bin": {

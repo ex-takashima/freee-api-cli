@@ -19,7 +19,7 @@ const program = new Command();
 program
   .name("freee")
   .description("freee会計 API CLI ツール")
-  .version("1.2.0")
+  .version("1.2.1")
   .option("--company-id <id>", "事業所ID")
   .option("--format <format>", "出力フォーマット (table/json)", "table");
 
