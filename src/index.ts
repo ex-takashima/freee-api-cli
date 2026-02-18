@@ -10,13 +10,16 @@ import { registerTagsCommands } from "./commands/tags";
 import { registerJournalsCommands } from "./commands/journals";
 import { registerTrialBalanceCommands } from "./commands/trial-balance";
 import { registerWalletablesCommands } from "./commands/walletables";
+import { registerWalletTxnsCommands } from "./commands/wallet-txns";
+import { registerBanksCommands } from "./commands/banks";
+import { registerTransfersCommands } from "./commands/transfers";
 
 const program = new Command();
 
 program
   .name("freee")
   .description("freee会計 API CLI ツール")
-  .version("1.1.0")
+  .version("1.2.0")
   .option("--company-id <id>", "事業所ID")
   .option("--format <format>", "出力フォーマット (table/json)", "table");
 
@@ -31,5 +34,8 @@ registerTagsCommands(program);
 registerJournalsCommands(program);
 registerTrialBalanceCommands(program);
 registerWalletablesCommands(program);
+registerWalletTxnsCommands(program);
+registerBanksCommands(program);
+registerTransfersCommands(program);
 
 program.parse(process.argv);
