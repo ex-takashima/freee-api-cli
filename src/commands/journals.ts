@@ -52,13 +52,16 @@ export function registerJournalsCommands(program: Command): void {
               downloadUrl = statusRes.data.journals.url;
               break;
             }
+            // 202: まだ処理中 (2xxなのでcatchには入らない)
+            process.stdout.write(".");
           } catch (err: unknown) {
             if (
               err &&
               typeof err === "object" &&
               "response" in err &&
-              (err as { response?: { status?: number } }).response?.status === 202
+              (err as { response?: { status?: number } }).response?.status === 503
             ) {
+              // 503: freee APIが処理中を示すステータス
               process.stdout.write(".");
               continue;
             }
